@@ -15,18 +15,18 @@ const TodoList = () => {
   const renderContent = {
     [Status.idle]: () => <></>,
     [Status.succeeded]: () => (
-      <ul>
+      <div>
         {todos.map((todo) => (
           <TodoItem {...todo} key={todo.id} />
         ))}
-      </ul>
+      </div>
     ),
     [Status.loading]: () => <p>Loading...</p>,
     [Status.failed]: () => <p>{error}</p>,
   };
 
   return (
-    <section>
+    <section className="container">
       <h2>Todos</h2>
       {renderContent[status]()}
     </section>
