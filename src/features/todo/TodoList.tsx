@@ -2,7 +2,7 @@ import { AppDispatch } from "app/store";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TodoItem from "./TodoItem/TodoItem";
-import { selectTodoSlice, fetchTodos } from "./todoSlice";
+import { fetchTodos, selectTodoSlice } from "./todoSlice";
 import { Status } from "./types";
 const TodoList = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -27,7 +27,8 @@ const TodoList = () => {
 
   return (
     <section className="container">
-      <h2>Todos</h2>
+      <h2>Chores</h2>
+
       {renderContent[status]()}
     </section>
   );

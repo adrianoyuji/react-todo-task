@@ -1,0 +1,27 @@
+@use "../../../styles/constants.scss" as c;
+
+.btn {
+  background: none;
+  color: inherit;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  padding: c.$base-padding/2 c.$base-padding;
+  border-radius: c.$base-padding/4;
+}
+.btn--disabled {
+  opacity: 0.65;
+}
+.btn--primary {
+  background-color: c.$primary;
+  color: c.$text-light;
+}
+
+.btn--secondary {
+  background-color: #{c.$secondary}50;
+  color: c.$primary;
+}
+.btn--ghost {
+  color: c.$primary;
+}
