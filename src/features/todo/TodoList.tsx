@@ -1,6 +1,7 @@
 import { AppDispatch } from "app/store";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import TodoItem from "./TodoItem/TodoItem";
 import { selectTodoSlice, fetchTodos } from "./todoSlice";
 import { Status } from "./types";
 const TodoList = () => {
@@ -13,8 +14,13 @@ const TodoList = () => {
 
   const renderContent = {
     [Status.idle]: () => <></>,
-    [Status.succeeded]: () =>
-      todos.map((todo) => <article key={todo.id}>{todo.title}</article>),
+    [Status.succeeded]: () => (
+      <ul>
+        {todos.map((todo) => (
+          <TodoItem {...todo} key={todo.id} />
+        ))}
+      </ul>
+    ),
     [Status.loading]: () => <p>Loading...</p>,
     [Status.failed]: () => <p>{error}</p>,
   };

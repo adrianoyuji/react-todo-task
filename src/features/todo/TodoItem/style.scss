@@ -1,0 +1,20 @@
+@use "../../../styles/constants.scss" as c;
+
+.todo__item {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  padding: c.$base-padding;
+  border-radius: c.$base-padding/4;
+  background-color: c.$white;
+  width: 100%;
+}
+
+.todo__title {
+  color: c.$text-dark;
+}
+
+.todo__description {
+  color: c.$text-dark;
+}
