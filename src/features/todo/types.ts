@@ -4,6 +4,14 @@ export interface Todo {
   description: string;
 }
 
+export enum Status {
+  idle = "idle",
+  loading = "loading",
+  succeeded = "succeeded",
+  failed = "failed",
+}
 export interface TodoState {
   list: Todo[];
+  status: Status;
+  error: string | null;
 }
