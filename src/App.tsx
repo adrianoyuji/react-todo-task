@@ -1,7 +1,7 @@
 import Header from "app/layout/Header";
 import AboutPage from "features/about/AboutPage";
 import NotFoundPage from "features/notFound/NotFoundPage";
-import TodoPage from "features/todo/TodoPage";
+import ChorePage from "features/chores/ChorePage";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <>
       <Header />
       <Routes>
-        <Route path="/" element={<TodoPage />} />
+        <Route path="/" element={<ChorePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

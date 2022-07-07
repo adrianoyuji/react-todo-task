@@ -3,18 +3,18 @@ import Modal from "app/components/Modal";
 import { AppDispatch } from "app/store";
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { onCloseTodoModal, selectTodoSlice, addNewTodo } from "./todoSlice";
+import { onCloseChoreModal, selectChoreSlice, addNewChore } from "./choreSlice";
 
-const TodoModal = () => {
+const ChoreModal = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const dispatch = useDispatch<AppDispatch>();
-  const { showTodoModal } = useSelector(selectTodoSlice);
+  const { showChoreModal } = useSelector(selectChoreSlice);
   const titleRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (titleRef && showTodoModal) titleRef.current?.focus();
-  }, [titleRef, showTodoModal]);
+    if (titleRef && showChoreModal) titleRef.current?.focus();
+  }, [titleRef, showChoreModal]);
 
   const handleChangeTitle = (e: ChangeEvent<HTMLInputElement>) =>
     setTitle(e.target.value);
@@ -29,26 +29,26 @@ const TodoModal = () => {
 
   const handleCloseModal = () => {
     resetFields();
-    dispatch(onCloseTodoModal());
+    dispatch(onCloseChoreModal());
   };
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    dispatch(addNewTodo({ title, description }));
+    dispatch(addNewChore({ title, description }));
     handleCloseModal();
   };
 
   return (
-    <Modal title="New Chore" show={showTodoModal} onClose={handleCloseModal}>
+    <Modal title="New Chore" show={showChoreModal} onClose={handleCloseModal}>
       <form onSubmit={handleSubmit} className="form__container">
         <div className="form__group">
-          <label htmlFor="todo-title" className="form__input__label">
+          <label htmlFor="chore-title" className="form__input__label">
             Title:
           </label>
           <input
             onChange={handleChangeTitle}
             ref={titleRef}
-            id="todo-title"
+            id="chore-title"
             type="text"
             value={title}
             className="form__input--text"
@@ -56,13 +56,13 @@ const TodoModal = () => {
         </div>
 
         <div className="form__group">
-          <label htmlFor="todo-description" className="form__input__label">
+          <label htmlFor="chore-description" className="form__input__label">
             Description:
           </label>
           <textarea
             value={description}
             onChange={handleDescriptionTitle}
-            id="todo-description"
+            id="chore-description"
             className="form__input--textarea"
           ></textarea>
         </div>
@@ -75,4 +75,4 @@ const TodoModal = () => {
   );
 };
 
-export default TodoModal;
+export default ChoreModal;

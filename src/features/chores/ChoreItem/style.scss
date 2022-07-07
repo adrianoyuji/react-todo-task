@@ -1,6 +1,6 @@
 @use "../../../styles/constants.scss" as c;
 
-.todo__item {
+.chore__item {
   display: flex;
   flex-direction: column;
   box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1),
@@ -11,20 +11,20 @@
   margin: 0 0 c.$base-padding;
 }
 
-.todo__title {
+.chore__title {
   color: c.$text-dark;
 }
 
-.todo__description {
+.chore__description {
   color: c.$text-dark;
 }
 
-.todo__header {
+.chore__header {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.todo__title {
+.chore__title {
   flex-grow: 1;
 }

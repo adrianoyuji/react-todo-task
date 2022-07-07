@@ -1,37 +1,37 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "app/store";
-import { Status, NewTodo, TodoState } from "./types";
+import { Status, NewChore, ChoreState } from "./types";
 
-const initialState: TodoState = {
+const initialState: ChoreState = {
   list: [],
   status: Status.idle,
   error: null,
-  showTodoModal: false,
+  showChoreModal: false,
 };
 
 const BASE_URL = process.env.REACT_APP_BACKEND_API;
 
-export const fetchTodos = createAsyncThunk("todos/fetchTodos", async () => {
+export const fetchChores = createAsyncThunk("chores/fetchChores", async () => {
   const response = await fetch(`${BASE_URL}/api/todos`);
   const parsedResponse = await response.json();
   return parsedResponse;
 });
 
-export const addNewTodo = createAsyncThunk(
-  "todos/addNewTodo",
-  async (newTodo: NewTodo) => {
+export const addNewChore = createAsyncThunk(
+  "chores/addNewChore",
+  async (newChore: NewChore) => {
     const response = await fetch(`${BASE_URL}/api/todos`, {
       method: "post",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newTodo),
+      body: JSON.stringify(newChore),
     });
     const parsedResponse = await response.json();
     return parsedResponse;
   }
 );
 
-export const deleteTodo = createAsyncThunk(
-  "todos/deleteTodo",
+export const deleteChore = createAsyncThunk(
+  "chores/deleteChore",
   async (id: number) => {
     const response = await fetch(`${BASE_URL}/api/todos/${id}`, {
       method: "delete",
@@ -41,37 +41,37 @@ export const deleteTodo = createAsyncThunk(
   }
 );
 
-const todoSlice = createSlice({
-  name: "todos",
+const choreSlice = createSlice({
+  name: "chores",
   initialState,
   reducers: {
-    onOpenTodoModal: (state) => {
-      state.showTodoModal = true;
+    onOpenChoreModal: (state) => {
+      state.showChoreModal = true;
     },
-    onCloseTodoModal: (state) => {
-      state.showTodoModal = false;
+    onCloseChoreModal: (state) => {
+      state.showChoreModal = false;
     },
   },
   extraReducers(builder) {
     builder
-      .addCase(fetchTodos.pending, (state, action) => {
+      .addCase(fetchChores.pending, (state, action) => {
         state.status = Status.loading;
       })
-      .addCase(fetchTodos.fulfilled, (state, action) => {
+      .addCase(fetchChores.fulfilled, (state, action) => {
         state.status = Status.succeeded;
         state.list = action.payload;
       })
-      .addCase(fetchTodos.rejected, (state, action) => {
+      .addCase(fetchChores.rejected, (state, action) => {
         state.status = Status.failed;
         state.error = action.error.message || "Something went wrong...";
       })
-      .addCase(addNewTodo.fulfilled, (state, action) => {
+      .addCase(addNewChore.fulfilled, (state, action) => {
         state.list = [...state.list, action.payload];
       })
-      .addCase(deleteTodo.fulfilled, (state, action) => {
+      .addCase(deleteChore.fulfilled, (state, action) => {
         if (action.payload.id && !action.payload.error) {
           state.list = state.list.filter(
-            (todo) => todo.id !== action.payload.id
+            (chore) => chore.id !== action.payload.id
           );
         } else {
           console.log("Something went wrong: ", action.payload.error);
@@ -80,6 +80,6 @@ const todoSlice = createSlice({
   },
 });
 
-export const selectTodoSlice = (state: RootState) => state.todos;
-export const { onCloseTodoModal, onOpenTodoModal } = todoSlice.actions;
-export default todoSlice.reducer;
+export const selectChoreSlice = (state: RootState) => state.chores;
+export const { onCloseChoreModal, onOpenChoreModal } = choreSlice.actions;
+export default choreSlice.reducer;

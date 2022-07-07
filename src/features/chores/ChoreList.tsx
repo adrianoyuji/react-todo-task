@@ -1,23 +1,24 @@
 import { AppDispatch } from "app/store";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import TodoItem from "./TodoItem/TodoItem";
-import { fetchTodos, selectTodoSlice } from "./todoSlice";
+import ChoreItem from "./ChoreItem/ChoreItem";
+import { fetchChores, selectChoreSlice } from "./choreSlice";
 import { Status } from "./types";
-const TodoList = () => {
+
+const ChoreList = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { error, list: todos, status } = useSelector(selectTodoSlice);
+  const { error, list: chores, status } = useSelector(selectChoreSlice);
 
   useEffect(() => {
-    if (status === Status.idle) dispatch(fetchTodos());
+    if (status === Status.idle) dispatch(fetchChores());
   }, [status, dispatch]);
 
   const renderContent = {
     [Status.idle]: () => <></>,
     [Status.succeeded]: () => (
       <div>
-        {todos.map((todo) => (
-          <TodoItem {...todo} key={todo.id} />
+        {chores.map((chore) => (
+          <ChoreItem {...chore} key={chore.id} />
         ))}
       </div>
     ),
@@ -28,4 +29,4 @@ const TodoList = () => {
   return <section className="container">{renderContent[status]()}</section>;
 };
 
-export default TodoList;
+export default ChoreList;

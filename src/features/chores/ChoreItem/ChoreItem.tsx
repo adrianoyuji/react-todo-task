@@ -1,34 +1,34 @@
 import React from "react";
 import "./style.scss";
-import { Todo } from "../types";
+import { Chore } from "../types";
 import Menu from "app/components/Menu";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "app/store";
-import { deleteTodo } from "../todoSlice";
+import { deleteChore } from "../choreSlice";
 
-const TodoItem = ({ description, id, title }: Todo) => {
+const ChoreItem = ({ description, id, title }: Chore) => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const handleDeleteTodo = () => dispatch(deleteTodo(id));
+  const handleDeleteChore = () => dispatch(deleteChore(id));
 
   return (
-    <div className="todo__item">
-      <div className="todo__header">
-        <h3 className="todo__title">{title}</h3>
+    <div className="chore__item">
+      <div className="chore__header">
+        <h3 className="chore__title">{title}</h3>
         <Menu
           cardId={id}
           options={[
             {
               label: "View",
-              href: `/todo/${id}`,
+              href: `/chores/${id}`,
             },
             {
               label: "Edit",
-              href: `/todo/${id}/edit`,
+              href: `/chores/${id}/edit`,
             },
             {
               label: "Delete",
-              action: handleDeleteTodo,
+              action: handleDeleteChore,
             },
           ]}
         />
@@ -38,4 +38,4 @@ const TodoItem = ({ description, id, title }: Todo) => {
   );
 };
 
-export default React.memo(TodoItem);
+export default React.memo(ChoreItem);

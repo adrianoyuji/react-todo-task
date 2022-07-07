@@ -1,9 +1,9 @@
-export interface Todo {
+export interface Chore {
   id: number;
   title: string;
   description: string;
 }
-export interface NewTodo {
+export interface NewChore {
   title: string;
   description: string;
 }
@@ -14,9 +14,9 @@ export enum Status {
   succeeded = "succeeded",
   failed = "failed",
 }
-export interface TodoState {
-  list: Todo[];
+export interface ChoreState {
+  list: Chore[];
   status: Status;
   error: string | null;
-  showTodoModal: boolean;
+  showChoreModal: boolean;
 }
