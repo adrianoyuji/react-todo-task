@@ -1,0 +1,29 @@
+@use "../../styles/constants.scss" as c;
+
+.home__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 64px;
+}
+
+.home__title {
+  margin: 0;
+  color: c.$text-dark;
+}
+
+.home__subtitle {
+  color: c.$text-dark;
+}
+
+.home__chores__link {
+  text-decoration: none;
+  padding: c.$base-padding/2 c.$base-padding;
+  border-radius: c.$base-padding/4;
+  background-color: c.$primary;
+  color: c.$text-light;
+  &:hover {
+    opacity: 0.85;
+  }
+}
