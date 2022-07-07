@@ -25,14 +25,26 @@
   padding: c.$base-padding;
   border-radius: c.$base-padding/4;
   z-index: 1000;
+  min-width: 80%;
+  @media screen and (min-width: 768px) {
+    min-width: 60%;
+  }
 }
 
 .modal__header {
   display: flex;
   flex-direction: row;
   width: 100%;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
+
+.modal__header__title {
+  font-size: 1.5rem;
+  color: c.$text-dark;
+  margin: 0;
+  padding: 0;
+}
+
 .modal__close__btn {
   background: none;
   color: inherit;
@@ -40,14 +52,14 @@
   font: inherit;
   cursor: pointer;
   outline: inherit;
+  &:focus {
+    border: 2px solid black;
+  }
 }
 
 .modal__close__container {
   height: 100%;
   cursor: pointer;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .modal__close_icon::before,
@@ -59,7 +71,7 @@
   width: 1rem;
   border-radius: 2px;
   right: c.$base-padding;
-  top: c.$base-padding + 0.3rem;
+  top: c.$base-padding + 0.5rem;
 }
 
 .modal__close_icon::before {

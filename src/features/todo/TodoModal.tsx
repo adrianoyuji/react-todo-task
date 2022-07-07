@@ -10,7 +10,7 @@ const TodoModal = () => {
   const handleCloseModal = () => dispatch(onCloseTodoModal());
 
   return (
-    <Modal show={showTodoModal} onClose={handleCloseModal}>
+    <Modal title="New Chore" show={showTodoModal} onClose={handleCloseModal}>
       <h3>placeholder</h3>
     </Modal>
   );
