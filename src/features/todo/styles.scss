@@ -1,0 +1,11 @@
+@use "../../styles/constants.scss" as c;
+
+.heading__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  h2 {
+    margin: 0;
+    padding-right: c.$base-padding;
+  }
+}

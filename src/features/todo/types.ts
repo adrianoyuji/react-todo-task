@@ -14,4 +14,5 @@ export interface TodoState {
   list: Todo[];
   status: Status;
   error: string | null;
+  showTodoModal: boolean;
 }

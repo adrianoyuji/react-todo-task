@@ -25,13 +25,7 @@ const TodoList = () => {
     [Status.failed]: () => <p>{error}</p>,
   };
 
-  return (
-    <section className="container">
-      <h2>Chores</h2>
-
-      {renderContent[status]()}
-    </section>
-  );
+  return <section className="container">{renderContent[status]()}</section>;
 };
 
 export default TodoList;

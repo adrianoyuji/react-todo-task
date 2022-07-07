@@ -1,16 +1,22 @@
 @use "../../../styles/constants.scss" as c;
 
+@mixin FadeInFadeOut {
+  animation: fadeIn 0.1s linear forwards;
+}
+
 .modal__overlay {
+  @include FadeInFadeOut();
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.33);
   z-index: 1000;
 }
 
 .modal {
+  @include FadeInFadeOut();
   position: fixed;
   top: 50%;
   left: 50%;
@@ -19,4 +25,58 @@
   padding: c.$base-padding;
   border-radius: c.$base-padding/4;
   z-index: 1000;
+}
+
+.modal__header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-end;
+}
+.modal__close__btn {
+  background: none;
+  color: inherit;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.modal__close__container {
+  height: 100%;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal__close_icon::before,
+.modal__close_icon::after {
+  display: block;
+  background-color: c.$text-dark;
+  position: absolute;
+  height: 2px;
+  width: 1rem;
+  border-radius: 2px;
+  right: c.$base-padding;
+  top: c.$base-padding + 0.3rem;
+}
+
+.modal__close_icon::before {
+  content: "";
+  transform: rotate(45deg);
+}
+
+.modal__close_icon::after {
+  content: "";
+  transform: rotate(-45deg);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

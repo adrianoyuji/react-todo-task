@@ -12,9 +12,20 @@ const Modal = ({ children, show, onClose }: Props) => {
 
   return createPortal(
     <>
-      <span className="modal__overlay" />
+      <span className="modal__overlay" onClick={onClose} />
       <div className="modal">
-        <div onClick={onClose}>xDs</div>
+        <div className="modal__header">
+          <input
+            id="close-modal"
+            type="button"
+            className="modal__close__btn"
+            onClick={onClose}
+          ></input>
+          <label htmlFor="close-modal" className="modal__close__container">
+            <div className="modal__close_icon" />
+          </label>
+        </div>
+
         {children}
       </div>
     </>,
