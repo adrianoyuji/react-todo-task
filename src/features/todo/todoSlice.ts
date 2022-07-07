@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "app/store";
-import { Status, Todo, TodoState } from "./types";
+import { Status, NewTodo, TodoState } from "./types";
 
 const initialState: TodoState = {
   list: [],
@@ -19,9 +19,9 @@ export const fetchTodos = createAsyncThunk("todos/fetchTodos", async () => {
 
 export const addNewTodo = createAsyncThunk(
   "todos/addNewTodo",
-  async (newTodo: Todo) => {
+  async (newTodo: NewTodo) => {
     const response = await fetch(`${BASE_URL}/api/todos`, {
-      method: "POST",
+      method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newTodo),
     });

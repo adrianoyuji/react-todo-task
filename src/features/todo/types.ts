@@ -3,6 +3,10 @@ export interface Todo {
   title: string;
   description: string;
 }
+export interface NewTodo {
+  title: string;
+  description: string;
+}
 
 export enum Status {
   idle = "idle",
