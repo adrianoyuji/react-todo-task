@@ -10,7 +10,6 @@ const TodoModal = () => {
   const [description, setDescription] = useState("");
   const dispatch = useDispatch<AppDispatch>();
   const { showTodoModal } = useSelector(selectTodoSlice);
-  const handleCloseModal = () => dispatch(onCloseTodoModal());
   const titleRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -28,10 +27,14 @@ const TodoModal = () => {
     setTitle("");
   };
 
+  const handleCloseModal = () => {
+    resetFields();
+    dispatch(onCloseTodoModal());
+  };
+
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
     dispatch(addNewTodo({ title, description }));
-    resetFields();
     handleCloseModal();
   };
 
@@ -64,7 +67,7 @@ const TodoModal = () => {
           ></textarea>
         </div>
         <div className="form__button-group">
-          <Button label="Cancel" variant="ghost" />
+          <Button label="Cancel" variant="ghost" onClick={handleCloseModal} />
           <Button type="submit" label="Create" variant="primary" />
         </div>
       </form>
