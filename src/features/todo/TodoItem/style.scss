@@ -8,7 +8,7 @@
   padding: c.$base-padding;
   border-radius: c.$base-padding/4;
   background-color: c.$white;
-  margin: c.$base-padding 0;
+  margin: 0 0 c.$base-padding;
 }
 
 .todo__title {
@@ -17,4 +17,14 @@
 
 .todo__description {
   color: c.$text-dark;
+}
+
+.todo__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.todo__title {
+  flex-grow: 1;
 }

@@ -30,6 +30,17 @@ export const addNewTodo = createAsyncThunk(
   }
 );
 
+export const deleteTodo = createAsyncThunk(
+  "todos/deleteTodo",
+  async (id: number) => {
+    const response = await fetch(`${BASE_URL}/api/todos/${id}`, {
+      method: "delete",
+    });
+    if (response.status === 200) return { id, error: "" };
+    return { id: null, error: `${response?.status}: ${response?.statusText}` };
+  }
+);
+
 const todoSlice = createSlice({
   name: "todos",
   initialState,
@@ -56,6 +67,15 @@ const todoSlice = createSlice({
       })
       .addCase(addNewTodo.fulfilled, (state, action) => {
         state.list = [...state.list, action.payload];
+      })
+      .addCase(deleteTodo.fulfilled, (state, action) => {
+        if (action.payload.id && !action.payload.error) {
+          state.list = state.list.filter(
+            (todo) => todo.id !== action.payload.id
+          );
+        } else {
+          console.log("Something went wrong: ", action.payload.error);
+        }
       });
   },
 });

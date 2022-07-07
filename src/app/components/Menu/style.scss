@@ -1,0 +1,109 @@
+@use "../../../styles/constants.scss" as c;
+
+.menu__container {
+  position: relative;
+}
+
+.menu__btn {
+  background: none;
+  color: inherit;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  &:focus {
+    border: 2px solid black;
+  }
+}
+
+.menu__box {
+  position: relative;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: 250ms ease-in-out;
+  &:hover {
+    background-color: c.$text-gray;
+  }
+}
+
+.menu__options__container {
+  position: absolute;
+  top: 18%;
+}
+
+.menu__options__icon {
+  cursor: pointer;
+  position: relative;
+  width: 4px;
+  height: 4px;
+  background-color: c.$text-dark;
+  border-radius: 50%;
+}
+
+.menu__options__icon:before,
+.menu__options__icon:after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  left: 0px;
+  background-color: inherit;
+  border-radius: 50%;
+}
+
+.menu__options__icon:before {
+  top: 8px;
+}
+
+.menu__options__icon:after {
+  top: 16px;
+}
+
+.menu__dropdown {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: -90px;
+  top: 0;
+  border-radius: 8px;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  border: 1px solid c.$primary;
+  background-color: c.$white;
+}
+.menu__dropdown__button {
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid c.$primary;
+  padding: c.$base-padding/2 c.$base-padding;
+  &:hover {
+    background-color: c.$text-gray;
+  }
+  text-decoration: none;
+  color: c.$text-dark;
+  background: none;
+  color: inherit;
+  font: inherit;
+}
+.menu__dropdown__button:first-child {
+  &:hover {
+    border-radius: 8px 8px 0 0;
+  }
+}
+
+.menu__dropdown__button:last-child {
+  border-bottom: none;
+  &:hover {
+    border-radius: 0 0 8px 8px;
+  }
+}
