@@ -12,7 +12,7 @@ const initialState: ChoreState = {
 const BASE_URL = process.env.REACT_APP_BACKEND_API;
 
 export const fetchChores = createAsyncThunk("chores/fetchChores", async () => {
-  const response = await fetch(`${BASE_URL}/api/todos`);
+  const response = await fetch(`${BASE_URL}/api/chores`);
   const parsedResponse = await response.json();
   return parsedResponse;
 });
@@ -20,7 +20,7 @@ export const fetchChores = createAsyncThunk("chores/fetchChores", async () => {
 export const addNewChore = createAsyncThunk(
   "chores/addNewChore",
   async (newChore: NewChore) => {
-    const response = await fetch(`${BASE_URL}/api/todos`, {
+    const response = await fetch(`${BASE_URL}/api/chores`, {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newChore),
@@ -33,7 +33,7 @@ export const addNewChore = createAsyncThunk(
 export const deleteChore = createAsyncThunk(
   "chores/deleteChore",
   async (id: number) => {
-    const response = await fetch(`${BASE_URL}/api/todos/${id}`, {
+    const response = await fetch(`${BASE_URL}/api/chores/${id}`, {
       method: "delete",
     });
     if (response.status === 200) return { id, error: "" };
