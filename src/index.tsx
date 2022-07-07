@@ -1,9 +1,8 @@
-import AboutPage from "features/about/AboutPage";
-import TodoPage from "features/todo/TodoPage";
+import App from "App";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import store from "./app/store";
 import "./index.scss";
 import "./styles/global.scss";
@@ -16,10 +15,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<TodoPage />} />
-          <Route path="/about" element={<AboutPage />} />
-        </Routes>
+        <App />
       </BrowserRouter>
     </Provider>
   </React.StrictMode>

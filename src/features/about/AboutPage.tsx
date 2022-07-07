@@ -3,12 +3,7 @@ import React from "react";
 import About from "./About";
 
 const AboutPage = () => {
-  return (
-    <>
-      <Header />
-      <About />
-    </>
-  );
+  return <About />;
 };
 
 export default AboutPage;
