@@ -1,14 +1,14 @@
 import Header from "app/layout/Header";
-import TodoList from "features/todo/TodoList";
 import React from "react";
+import About from "./About";
 
-function App() {
+const AboutPage = () => {
   return (
     <>
       <Header />
-      <TodoList />
+      <About />
     </>
   );
-}
+};
 
-export default App;
+export default AboutPage;

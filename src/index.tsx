@@ -1,10 +1,11 @@
+import AboutPage from "features/about/AboutPage";
+import TodoPage from "features/todo/TodoPage";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.scss";
-import App from "./App";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import store from "./app/store";
+import "./index.scss";
 import "./styles/global.scss";
 
 const root = ReactDOM.createRoot(
@@ -16,7 +17,8 @@ root.render(
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<App />} />
+          <Route path="/" element={<TodoPage />} />
+          <Route path="/about" element={<AboutPage />} />
         </Routes>
       </BrowserRouter>
     </Provider>
