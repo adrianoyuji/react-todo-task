@@ -1,3 +1,4 @@
+import Spinner from "app/components/Spinner";
 import { AppDispatch } from "app/store";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,7 +23,7 @@ const ChoreList = () => {
         ))}
       </div>
     ),
-    [Status.loading]: () => <p>Loading...</p>,
+    [Status.loading]: () => <Spinner />,
     [Status.failed]: () => <p>{error}</p>,
   };
 

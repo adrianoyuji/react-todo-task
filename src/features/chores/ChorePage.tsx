@@ -1,3 +1,4 @@
+import Spinner from "app/components/Spinner";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -41,7 +42,7 @@ const ChorePage = () => {
   const renderContent = {
     [Status.idle]: () => <></>,
     [Status.succeeded]: () => chore && <ChoreDetails chore={chore} />,
-    [Status.loading]: () => <p>Loading...</p>,
+    [Status.loading]: () => <Spinner />,
     [Status.failed]: () => <p>Chore not found</p>,
   };
   return <section className="container">{renderContent[status]()}</section>;
