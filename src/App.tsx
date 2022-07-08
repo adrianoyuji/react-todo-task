@@ -1,10 +1,10 @@
 import Header from "app/layout/Header";
 import AboutPage from "features/about/AboutPage";
 import NotFoundPage from "features/notFound/NotFoundPage";
-import ChorePage from "features/chores/ChorePage";
+import ChoresPage from "features/chores/ChoresPage";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "features/home/HomePage";
-import ChoreDetails from "features/chores/ChoreDetails";
+import ChorePage from "features/chores/ChorePage";
 
 function App() {
   return (
@@ -13,8 +13,8 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/chores">
-          <Route index element={<ChorePage />} />
-          <Route path=":choreId/*" element={<ChoreDetails />} />
+          <Route index element={<ChoresPage />} />
+          <Route path=":choreId/*" element={<ChorePage />} />
         </Route>
         <Route path="/about" element={<AboutPage />} />
         <Route path="*" element={<NotFoundPage />} />

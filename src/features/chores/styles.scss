@@ -33,6 +33,13 @@
   border: 1px solid c.$primary;
   border-radius: c.$base-padding/4;
   box-sizing: border-box;
+  &:disabled {
+    background-color: inherit;
+    border: none;
+    color: inherit;
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 .form__input--textarea {
   width: 100%;
@@ -42,6 +49,13 @@
   border-radius: c.$base-padding/4;
   box-sizing: border-box;
   height: 128px;
+  &:disabled {
+    background-color: inherit;
+    border: none;
+    color: inherit;
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .form__button-group {

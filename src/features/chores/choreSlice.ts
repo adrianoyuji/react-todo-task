@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "app/store";
-import { Status, NewChore, ChoreState } from "./types";
+import { Status, NewChore, ChoreState, Chore } from "./types";
 
 const initialState: ChoreState = {
   list: [],
@@ -9,7 +9,7 @@ const initialState: ChoreState = {
   showChoreModal: false,
 };
 
-const BASE_URL = process.env.REACT_APP_BACKEND_API;
+export const BASE_URL = process.env.REACT_APP_BACKEND_API;
 
 export const fetchChores = createAsyncThunk("chores/fetchChores", async () => {
   const response = await fetch(`${BASE_URL}/api/chores`);
@@ -38,6 +38,19 @@ export const deleteChore = createAsyncThunk(
     });
     if (response.status === 200) return { id, error: "" };
     return { id: null, error: `${response?.status}: ${response?.statusText}` };
+  }
+);
+
+export const updateChore = createAsyncThunk(
+  "chores/updateChore",
+  async (updatedChore: Chore) => {
+    const response = await fetch(`${BASE_URL}/api/chores/${updatedChore.id}`, {
+      method: "put",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updatedChore),
+    });
+    const parsedResponse = await response.json();
+    return parsedResponse;
   }
 );
 
@@ -76,6 +89,15 @@ const choreSlice = createSlice({
         } else {
           console.log("Something went wrong: ", action.payload.error);
         }
+      })
+      .addCase(updateChore.fulfilled, (state, action) => {
+        state.list = state.list.map((chore) => {
+          if (chore.id !== action.payload.id) {
+            return chore;
+          } else {
+            return action.payload;
+          }
+        });
       });
   },
 });

@@ -21,13 +21,14 @@ const Button = ({
   }`;
 
   return (
-    <input
+    <button
       className={buttonStyling}
       type={type}
       onClick={onClick}
-      value={label}
       disabled={disabled}
-    />
+    >
+      {label}
+    </button>
   );
 };
 
