@@ -3,21 +3,36 @@ import React from "react";
 const About = () => {
   return (
     <section className="container">
-      <h2>Lorem Ipsum</h2>
+      <h2>About</h2>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec
-        ultrices risus, venenatis facilisis leo. Morbi at risus eu ante
-        hendrerit pretium. Duis efficitur molestie lorem. Donec consectetur
-        auctor tellus at lacinia. Nullam posuere, magna sed imperdiet pretium,
-        eros tellus posuere neque, id tincidunt mi augue id arcu. Vivamus
-        bibendum metus orci, ornare tempus mauris sollicitudin quis. Nunc
-        lobortis, neque vitae egestas hendrerit, elit neque tempus magna, eu
-        facilisis lacus lacus eu odio. Maecenas et pellentesque ante, sit amet
-        lacinia velit. Vivamus et tempus sem. Mauris non aliquet turpis, et
-        tempus urna. Praesent varius justo nec diam efficitur, nec aliquam mi
-        aliquam. Suspendisse consequat imperdiet lectus vel fermentum. Praesent
-        blandit augue at odio vestibulum consectetur. Fusce congue eros vitae
-        dolor ornare lacinia.
+        Chore Tracker is a simple note-taking web app. It was developed as a
+        React, Redux and TypeScript code challenge!
+      </p>
+      <span>Main features:</span>
+      <ul>
+        <li>Show a list of chores;</li>
+        <li>Create a new chore;</li>
+        <li>Edit a chore;</li>
+        <li>Delete a chore;</li>
+        <li>All actions communicates with the API.</li>
+      </ul>
+      <span>Other functionalities:</span>
+      <ul>
+        <li>Supports routing;</li>
+        <li>Delete confirmation dialog;</li>
+        <li>SCSS's BEM methodology;</li>
+        <li>Mobile friendly;</li>
+      </ul>
+      <p>
+        Developed by{" "}
+        <a href="https://www.linkedin.com/in/adriano-yuji-sato-de-vasconcelos-034b09191/">
+          Adriano Yuji
+        </a>
+        .
+      </p>
+      <p>
+        Github repository:{" "}
+        <a href="https://github.com/adrianoyuji/react-todo-task">Click here</a>!
       </p>
     </section>
   );
