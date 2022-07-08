@@ -10,11 +10,13 @@
 
 .notfound__title {
   color: c.$primary-darker;
+  text-align: center;
 }
 
 .notfound__nav {
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
 .notfound__ul {
