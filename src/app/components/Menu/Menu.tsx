@@ -57,6 +57,7 @@ const Menu = ({ options, cardId }: Props) => {
                 </button>
               );
             }
+            return null;
           })}
         </div>
       )}
