@@ -1,0 +1,8 @@
+@use "../../../styles/constants.scss" as c;
+
+.dialog__buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: c.$base-padding 0;
+}
