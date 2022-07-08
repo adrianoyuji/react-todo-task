@@ -9,6 +9,13 @@
   outline: inherit;
   padding: c.$base-padding/2 c.$base-padding;
   border-radius: c.$base-padding/4;
+
+  &:hover {
+    opacity: 0.85;
+  }
+  &:focus {
+    border: solid 2px black;
+  }
 }
 .btn--disabled {
   opacity: 0.65;
