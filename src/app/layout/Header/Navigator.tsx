@@ -1,6 +1,19 @@
-import { Link } from "react-router-dom";
+import { ChangeEvent, useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const Navigator = () => {
+  const location = useLocation();
+  const [showMenu, setShowMenu] = useState(false);
+
+  useEffect(() => {
+    closeMenu();
+  }, [location]);
+
+  const handleChangeCheckbox = (e: ChangeEvent<HTMLInputElement>) =>
+    setShowMenu(e.target.checked);
+
+  const closeMenu = () => setShowMenu(false);
+
   return (
     <>
       {/* Desktop navigator */}
@@ -24,7 +37,12 @@ const Navigator = () => {
         </ul>
       </nav>
       {/* Mobile Menu navigator */}
-      <input id="menu-toggle" type="checkbox" />
+      <input
+        checked={showMenu}
+        onChange={handleChangeCheckbox}
+        id="menu-toggle"
+        type="checkbox"
+      />
       <label className="menu-button-container" htmlFor="menu-toggle">
         <div className="menu-button"></div>
       </label>
