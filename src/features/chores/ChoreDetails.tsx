@@ -1,4 +1,5 @@
 import Button from "app/components/Button";
+import Dialog from "app/components/Dialog";
 import { AppDispatch } from "app/store";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
@@ -19,6 +20,10 @@ const ChoreDetails = ({ chore }: Props) => {
   );
   const [title, setTitle] = useState(chore.title);
   const [description, setDescription] = useState(chore.description);
+  const [showDialog, setShowDialog] = useState(false);
+
+  const handleShowDialog = () => setShowDialog(true);
+  const handleCloseDialog = () => setShowDialog(false);
 
   const handleChangeTitle = (e: ChangeEvent<HTMLInputElement>) =>
     setTitle(e.target.value);
@@ -46,56 +51,68 @@ const ChoreDetails = ({ chore }: Props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="form__container">
-      <div className="form__group">
-        <label htmlFor="chore-title" className="form__input__label">
-          Title:
-        </label>
-        <input
-          disabled={!editMode}
-          onChange={handleChangeTitle}
-          id="chore-title"
-          type="text"
-          value={title}
-          className="form__input--text"
-        ></input>
-      </div>
+    <>
+      <form onSubmit={handleSubmit} className="form__container">
+        <div className="form__group">
+          <label htmlFor="chore-title" className="form__input__label">
+            Title:
+          </label>
+          <input
+            disabled={!editMode}
+            onChange={handleChangeTitle}
+            id="chore-title"
+            type="text"
+            value={title}
+            className="form__input--text"
+          ></input>
+        </div>
 
-      <div className="form__group">
-        <label htmlFor="chore-description" className="form__input__label">
-          Description:
-        </label>
-        <textarea
-          disabled={!editMode}
-          value={description}
-          onChange={handleDescriptionTitle}
-          id="chore-description"
-          className="form__input--textarea"
-        ></textarea>
-      </div>
+        <div className="form__group">
+          <label htmlFor="chore-description" className="form__input__label">
+            Description:
+          </label>
+          <textarea
+            disabled={!editMode}
+            value={description}
+            onChange={handleDescriptionTitle}
+            id="chore-description"
+            className="form__input--textarea"
+          ></textarea>
+        </div>
 
-      <div className="form__button-group">
-        {editMode ? (
-          <>
-            <Button type="submit" label="Save" variant="primary" />
-            <Button label="Cancel" variant="ghost" onClick={handleCancelEdit} />
-          </>
-        ) : (
-          <>
-            <Button
-              label="Delete"
-              variant="ghost"
-              onClick={handleDeleteChore}
-            />
-            <Button
-              label="Edit"
-              variant="primary"
-              onClick={handleToggleEditMode}
-            />
-          </>
-        )}
-      </div>
-    </form>
+        <div className="form__button-group">
+          {editMode ? (
+            <>
+              <Button type="submit" label="Save" variant="primary" />
+              <Button
+                label="Cancel"
+                variant="ghost"
+                onClick={handleCancelEdit}
+              />
+            </>
+          ) : (
+            <>
+              <Button
+                label="Delete"
+                variant="ghost"
+                onClick={handleShowDialog}
+              />
+              <Button
+                label="Edit"
+                variant="primary"
+                onClick={handleToggleEditMode}
+              />
+            </>
+          )}
+        </div>
+      </form>
+      <Dialog
+        title={`Delete ${chore.title}?`}
+        onCancel={handleCloseDialog}
+        onConfirm={handleDeleteChore}
+        show={showDialog}
+      />
+    </>
   );
 };
 
