@@ -5,16 +5,18 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 64px;
+  height: 80%;
 }
 
 .home__title {
   margin: 0;
   color: c.$text-dark;
+  text-align: center;
 }
 
 .home__subtitle {
   color: c.$text-dark;
+  text-align: center;
 }
 
 .home__chores__link {

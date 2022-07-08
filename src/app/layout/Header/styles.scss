@@ -35,7 +35,7 @@
   text-decoration: none;
   color: c.$text-light;
   font-weight: bold;
-  margin: auto 0;
+  margin: auto c.$base-padding/4;
   &:hover {
     opacity: 0.8;
   }

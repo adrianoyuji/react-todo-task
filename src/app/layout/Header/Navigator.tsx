@@ -12,6 +12,11 @@ const Navigator = () => {
             </Link>
           </li>
           <li>
+            <Link to="/chores" className="header__link">
+              Chores
+            </Link>
+          </li>
+          <li>
             <Link to="/about" className="header__link">
               About
             </Link>
@@ -27,6 +32,11 @@ const Navigator = () => {
         <li>
           <Link to="/" className="header__link">
             Home
+          </Link>
+        </li>
+        <li>
+          <Link to="/chores" className="header__link">
+            Chores
           </Link>
         </li>
         <li>
