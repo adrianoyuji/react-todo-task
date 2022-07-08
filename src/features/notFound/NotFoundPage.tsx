@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./styles.scss";
 const NotFoundPage = () => {
   return (
-    <section className="notfound__container container">
+    <section className="notfound container">
       <h2 className="notfound__title">Oops! This page does not exist.</h2>
       <nav className="notfound__nav">
         <p>Please check our other pages</p>
@@ -11,6 +11,11 @@ const NotFoundPage = () => {
           <li>
             <Link to="/" className="notfound__link">
               Home
+            </Link>
+          </li>
+          <li>
+            <Link to="/chores" className="notfound__link">
+              Chores
             </Link>
           </li>
           <li>
